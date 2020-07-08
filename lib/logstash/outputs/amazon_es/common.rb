@@ -79,7 +79,7 @@ module LogStash; module Outputs; class AmazonElasticSearch;
           join_value = event.get(@join_field)
           parent_value = event.sprintf(@parent)
           event.set(@join_field, { "name" => join_value, "parent" => parent_value })
-          params[:_routing] = event.sprintf(@parent)
+          params[:routing] = event.sprintf(@parent)
         else
           params[:parent] = event.sprintf(@parent)
         end
