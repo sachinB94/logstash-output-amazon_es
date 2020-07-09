@@ -67,7 +67,7 @@ module LogStash; module Outputs; class AmazonElasticSearch;
         :_id => @document_id ? event.sprintf(@document_id) : nil,
         :_index => event.sprintf(@index),
         :_type => get_event_type(event),
-        :_routing => @routing ? event.sprintf(@routing) : nil
+        :routing => @routing ? event.sprintf(@routing) : nil
       }
 
       if @pipeline
