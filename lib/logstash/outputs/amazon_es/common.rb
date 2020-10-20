@@ -274,6 +274,7 @@ module LogStash; module Outputs; class AmazonElasticSearch;
         es_actions = actions.map {|action_type, params, event| [action_type, params, event.to_hash]}
         @logger.info(es_actions.inspect)
         response = @client.bulk(es_actions)
+        @logger.info(response.inspect)
         response
       rescue ::LogStash::Outputs::AmazonElasticSearch::HttpClient::Pool::HostUnreachableError => e
         # If we can't even connect to the server let's just print out the URL (:hosts is actually a URL)
