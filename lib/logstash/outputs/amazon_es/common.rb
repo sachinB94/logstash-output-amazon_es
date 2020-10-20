@@ -62,9 +62,6 @@ module LogStash; module Outputs; class AmazonElasticSearch;
     def event_action_tuple(event)
 
       action = event.sprintf(@action)
-      
-      @logger.info("@routing")
-      @logger.info(@routing)
 
       params = {
         :_id => @document_id ? event.sprintf(@document_id) : nil,
@@ -76,9 +73,6 @@ module LogStash; module Outputs; class AmazonElasticSearch;
       if @pipeline
         params[:pipeline] = event.sprintf(@pipeline)
       end
-      
-      @logger.info("@parent")
-      @logger.info(@parent)
 
       if @parent
         if @join_field
