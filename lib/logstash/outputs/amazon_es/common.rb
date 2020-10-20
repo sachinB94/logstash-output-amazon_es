@@ -63,7 +63,8 @@ module LogStash; module Outputs; class AmazonElasticSearch;
 
       action = event.sprintf(@action)
       
-      puts @routing
+      logger.debug("@routing")
+      logger.debug(@routing)
 
       params = {
         :_id => @document_id ? event.sprintf(@document_id) : nil,
@@ -76,8 +77,10 @@ module LogStash; module Outputs; class AmazonElasticSearch;
         params[:pipeline] = event.sprintf(@pipeline)
       end
       
-      puts @parent
-      puts @join_field
+      logger.debug("@parent")
+      logger.debug(@parent)
+      logger.debug("@join_field")
+      logger.debug(@join_field)
 
       if @parent
         if @join_field
@@ -104,7 +107,8 @@ module LogStash; module Outputs; class AmazonElasticSearch;
         params[:version_type] = event.sprintf(@version_type)
       end
       
-      puts params
+      logger.debug("params")
+      logger.debug(params)
 
       [action, params, event]
     end
