@@ -272,6 +272,7 @@ module LogStash; module Outputs; class AmazonElasticSearch;
       sleep_interval = @retry_initial_interval
       begin
         es_actions = actions.map {|action_type, params, event| [action_type, params, event.to_hash]}
+        @logger.info(es_actions)
         response = @client.bulk(es_actions)
         response
       rescue ::LogStash::Outputs::AmazonElasticSearch::HttpClient::Pool::HostUnreachableError => e
