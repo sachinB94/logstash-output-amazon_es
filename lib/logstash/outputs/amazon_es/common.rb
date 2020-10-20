@@ -98,9 +98,6 @@ module LogStash; module Outputs; class AmazonElasticSearch;
       if @version_type
         params[:version_type] = event.sprintf(@version_type)
       end
-      
-      @logger.info("params")
-      @logger.info(params)
 
       [action, params, event]
     end
