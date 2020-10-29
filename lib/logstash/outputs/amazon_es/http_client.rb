@@ -41,7 +41,7 @@ module LogStash; module Outputs; class AmazonElasticSearch;
       @metric = options[:metric]
       @bulk_request_metrics = @metric.namespace(:bulk_requests)
       @bulk_response_metrics = @bulk_request_metrics.namespace(:responses)
-      @max_bulk_bytes = options[:max_bulk_bytes] 
+      @max_bulk_bytes = 20 * 1024 * 1024
 
       # Again, in case we use DEFAULT_OPTIONS in the future, uncomment this.
       # @options = DEFAULT_OPTIONS.merge(options)
